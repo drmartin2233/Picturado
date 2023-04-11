@@ -5,7 +5,6 @@ export default function AllPostsPage() {
     const [posts, setPosts] = useState([])
 
     useEffect(function() {
-        console.log('print inside useEffect has fired')
         async function retrievePosts() {
             const retrievedPosts = await getAllPosts();
         }

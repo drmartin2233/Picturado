@@ -1,6 +1,11 @@
-
+import * as postsAPI from './posts-api';
 
 
 export async function getAllPosts() {
-    console.log('hello, from getAllPosts function!')
+    const posts = await postsAPI.getPosts();
+    return posts
 };
+
+
+
+
