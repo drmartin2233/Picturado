@@ -7,9 +7,10 @@ export default function AllPostsPage() {
     useEffect(function() {
         async function retrievePosts() {
             const retrievedPosts = await getAllPosts();
+            setPosts(retrievedPosts)
         }
        retrievePosts()
-    }, [posts]) 
+    }, []) 
 
     return(
             <h1>AllPostsPage</h1>
