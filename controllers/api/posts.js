@@ -2,7 +2,8 @@
 const Post = require('../../models/post');
 
 module.exports = {
- index
+ index,
+ create
 };
 
 
@@ -16,5 +17,17 @@ async function index(req, res) {
   }
 }
 
+async function create(req, res) {
+    try {
+       req.body.user = req.user._id
+ 
+       const createdPost = await Post.create(req.body);
+ 
+       res.json(createdPost)
+     } catch (err) {
+       console.log(err)
+       res.status(400).json(err);
+     }
+ }
 
 

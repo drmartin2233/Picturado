@@ -13,6 +13,11 @@ export default function AllPostsPage() {
     }, []) 
 
     return(
-            <h1>AllPostsPage</h1>
+        <>
+        <h1>AllPostsPage</h1>
+
+        <h3>No Posts Yet</h3>
+        
+        </>
     )
 };  
