@@ -19,7 +19,10 @@ const [post, setPost] = useState('');
       <>
       <h1>New Post</h1>
       <form action="" onSubmit={handleSubmit}>
-
+      <label htmlFor="text">Text:
+          <input type="text" name="text" id="text" onChange={handleChange}/>
+        </label>
+        <button type="submit">Add Post</button>
       </form>
       
       
