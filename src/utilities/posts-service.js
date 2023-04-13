@@ -6,8 +6,10 @@ export async function getAllPosts() {
     return posts
 };
 
-export async function createPost() {
-    postsAPI.createPostRequest();
+export async function createPost(postData) {
+    const post = await postsAPI.createPostRequest(postData);
+    return post;
+    
 }
 
 

@@ -16,6 +16,13 @@ export default function AllPostsPage() {
         <>
         <h1>AllPostsPage</h1>
 
+        { posts.map( post => (
+            <div>
+                <h1>{post.title}</h1>
+                <h3>{post.body}</h3>
+            </div>
+        ))}
+
         <h3>No Posts Yet</h3>
         
         </>

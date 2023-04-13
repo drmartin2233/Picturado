@@ -4,8 +4,8 @@ const postsCtrl = require('../../controllers/api/posts');
 
 // All paths start with '/api/posts'
 
-// POST /api/users (create a user - sign up)
+// POST /api/posts (create a user - sign up)
 router.get('/', postsCtrl.index);
-
+router.post('/', postsCtrl.create)
 
 module.exports = router;

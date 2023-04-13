@@ -4,14 +4,15 @@ import * as postsService from '../../utilities/posts-service'
 
 
 export default function NewPostPage() {
-const [post, setPost] = useState('');
+const [post, setPost] = useState({});
 
   function handleChange(evt) {
-    setPost(evt.target.value)
+    setPost({ ...post, [evt.target.name]: evt.target.value })
   }
 
   async function handleSubmit(evt) {
-    evt.preventdefault();
+    evt.preventDefault();
+    console.log("banana")
     postsService.createPost(post);
     setPost('');
   }
@@ -19,13 +20,17 @@ const [post, setPost] = useState('');
       <>
       <h1>New Post</h1>
       <form action="" onSubmit={handleSubmit}>
-      <label htmlFor="text">Text:
-          <input type="text" name="text" id="text" onChange={handleChange}/>
-        </label>
-        <button type="submit">Add Post</button>
+      <label htmlFor="title">Title:
+            <input type="text" name="title" id="title" onChange={handleChange}/>
+          </label>
+        <label htmlFor="body">Body:
+            <input type="text" name="body" id="body" onChange={handleChange}/>
+          </label>
+
+          <input type="submit" value="Add Post"/>
       </form>
       
       
       </>
     );
-  }
+ }

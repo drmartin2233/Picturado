@@ -18,9 +18,11 @@ async function index(req, res) {
 }
 
 async function create(req, res) {
+    console.log(req.body)
     try {
+
        req.body.user = req.user._id
- 
+        console.log(req.body)
        const createdPost = await Post.create(req.body);
  
        res.json(createdPost)
