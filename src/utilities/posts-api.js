@@ -12,3 +12,7 @@ export async function createPostRequest(postData) {
 export async function deletePostRequest(id) {
   return sendRequest(`${BASE_URL}/${id}`, 'DELETE')
 }
+
+export async function editPostRequest(id) {
+  return sendRequest(`${BASE_URL}/${id}`, 'PUT')
+}

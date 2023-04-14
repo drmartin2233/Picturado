@@ -1,4 +1,3 @@
-import { set } from "mongoose";
 import { useState } from "react";
 import * as postsService from '../../utilities/posts-service'
 
@@ -19,7 +18,7 @@ const [post, setPost] = useState({title:"", body:""});
   }
     return (
       <>
-      <h1>New Post</h1>
+      <h1>Edit Post</h1>
       <form action="" onSubmit={handleSubmit}>
       <label htmlFor="title">Title:
             <input type="text" name="title" id="title" onChange={handleChange} value={post.title}/>

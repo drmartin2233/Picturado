@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getAllPosts, deletePost } from '../../utilities/posts-service';
+import { getAllPosts, deletePost, updatePost } from '../../utilities/posts-service';
 import { Link } from 'react-router-dom';
 
 export default function AllPostsPage() {
@@ -12,14 +12,19 @@ export default function AllPostsPage() {
             setPosts(retrievedPosts)
         }
        retrievePosts()
-    }, [refresh]) 
+    }, [posts]) 
 
     async function deleteImage(id) {
         console.log('in delete image function')
         await deletePost(id)
-        toggleRefresh({})
+        const postsList = await getAllPosts()
+        setPosts(postsList)
     }
 
+    async function updatePost(id) {
+        await updatePost(id)
+        toggleRefresh({})
+    }
 
     return(
         <>
@@ -30,7 +35,7 @@ export default function AllPostsPage() {
                 <h1>{post.title}</h1>
                 <h3>{post.body}</h3>
                 <button onClick={ () => deleteImage(post._id)}>Delete Post</button>
-                <button>Edit Post</button>
+                <Link to={`/posts/${post._id}/edit`}><button>Edit Post</button></Link>
             </div>
         ))}
 

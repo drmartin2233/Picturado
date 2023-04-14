@@ -4,7 +4,8 @@ const Post = require('../../models/post');
 module.exports = {
  index,
  create,
- deletePost
+ deletePost,
+ edit
 };
 
 
@@ -40,6 +41,20 @@ async function deletePost(req, res) {
      
     const deletedPost = await Post.findByIdAndDelete(req.params.id);
     console.log(deletedPost);
+   
+  } catch (err) {
+    console.log(err)
+    res.status(400).json(err);
+  }
+}
+
+async function edit(req, res) {
+  try {
+
+    
+     
+    const editedPost = await Post.findByIdAndUpdate(req.params.id);
+    console.log(editedPost);
    
   } catch (err) {
     console.log(err)

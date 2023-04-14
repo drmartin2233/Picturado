@@ -6,6 +6,12 @@ export async function getAllPosts() {
     return posts
 };
 
+export async function getPost() {
+    const posts = await postsAPI.getPost();
+    return posts
+};
+
+
 export async function createPost(postData) {
     const post = await postsAPI.createPostRequest(postData);
     return post;
@@ -18,6 +24,9 @@ export async function deletePost(id) {
     
 }
 
-export async updatePost() {
-    
+export async function updatePost(postData) {
+    const post = await postsAPI.editPostRequest(postData);
+    return post;
+     
 }
+   
