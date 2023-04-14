@@ -13,3 +13,11 @@ export async function createPost(postData) {
 }
 
 
+export async function deletePost(id) {
+    const post = await postsAPI.deletePostRequest(id);
+    
+}
+
+export async updatePost() {
+    
+}

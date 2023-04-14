@@ -6,6 +6,8 @@ const postsCtrl = require('../../controllers/api/posts');
 
 // POST /api/posts (create a user - sign up)
 router.get('/', postsCtrl.index);
-router.post('/', postsCtrl.create)
+router.post('/', postsCtrl.create);
+router.delete('/:id', postsCtrl.deletePost);
+
 
 module.exports = router;
