@@ -1,9 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import * as postsService from '../../utilities/posts-service'
+import { useParams } from 'react-router-dom';
+
+export default function EditPostPage() {
+const [post, setPost] = useState({});
+let {id}= useParams()
+console.log(id)
+
+useEffect(function() {
+    async function retrievePost() {
+        const retrievedPost = await postsService.getPost(id);
+        setPost(retrievedPost)
+    }
+   retrievePost()
+}, [])  
 
 
-export default function NewPostPage() {
-const [post, setPost] = useState({title:"", body:""});
 
   function handleChange(evt) {
     setPost({ ...post, [evt.target.name]: evt.target.value })
@@ -12,10 +24,12 @@ const [post, setPost] = useState({title:"", body:""});
   async function handleSubmit(evt) {
     evt.preventDefault();
     console.log("banana")
-    postsService.createPost(post);
+    postsService.updatePost(id, post);
     setPost({title:"", body:""});
 
   }
+
+  
     return (
       <>
       <h1>Edit Post</h1>

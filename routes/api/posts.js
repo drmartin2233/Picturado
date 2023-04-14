@@ -8,6 +8,8 @@ const postsCtrl = require('../../controllers/api/posts');
 router.get('/', postsCtrl.index);
 router.post('/', postsCtrl.create);
 router.delete('/:id', postsCtrl.deletePost);
+router.get('/:id', postsCtrl.getPost);
+router.put('/:id', postsCtrl.updatePost);
 
 
 module.exports = router;

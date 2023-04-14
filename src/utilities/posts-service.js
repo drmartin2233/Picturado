@@ -6,9 +6,9 @@ export async function getAllPosts() {
     return posts
 };
 
-export async function getPost() {
-    const posts = await postsAPI.getPost();
-    return posts
+export async function getPost(id) {
+    const post = await postsAPI.getPost(id);
+    return post
 };
 
 
@@ -24,8 +24,8 @@ export async function deletePost(id) {
     
 }
 
-export async function updatePost(postData) {
-    const post = await postsAPI.editPostRequest(postData);
+export async function updatePost(id, postData) {
+    const post = await postsAPI.editPostRequest(id, postData);
     return post;
      
 }

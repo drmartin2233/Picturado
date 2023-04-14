@@ -5,7 +5,8 @@ module.exports = {
  index,
  create,
  deletePost,
- edit
+ getPost,
+ updatePost
 };
 
 
@@ -48,16 +49,33 @@ async function deletePost(req, res) {
   }
 }
 
-async function edit(req, res) {
+async function getPost(req, res) {
   try {
 
     
      
-    const editedPost = await Post.findByIdAndUpdate(req.params.id);
-    console.log(editedPost);
+    const foundPost = await Post.findById(req.params.id);
+    res.json(foundPost);
    
   } catch (err) {
     console.log(err)
     res.status(400).json(err);
   }
+}
+
+async function updatePost(req, res) {
+let postBody = {
+  title: req.body.title,
+  body: req.body.body
+}
+
+  try {
+
+     const updatedPost = await Post.findByIdAndUpdate(req.body._id, {$set: postBody}, {new: true} );
+
+     res.json(updatedPost)
+   } catch (err) {
+     console.log(err)
+     res.status(400).json(err);
+   }
 }
