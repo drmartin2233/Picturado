@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import * as postsService from '../../utilities/posts-service'
+import { useNavigate } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 
 export default function EditPostPage() {
+const navigate = useNavigate() 
 const [post, setPost] = useState({});
 let {id}= useParams()
 console.log(id)
@@ -26,6 +28,7 @@ useEffect(function() {
     console.log("banana")
     postsService.updatePost(id, post);
     setPost({title:"", body:""});
+    navigate("/posts")
 
   }
 
@@ -41,7 +44,7 @@ useEffect(function() {
             <input type="text" name="body" id="body" onChange={handleChange} value={post.body}/>
           </label>
 
-          <input type="submit" value="Add Post"/>
+          <input type="submit" value="Edit Post"/>
       </form>
       
       

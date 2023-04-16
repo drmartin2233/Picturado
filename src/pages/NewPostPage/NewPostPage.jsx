@@ -1,9 +1,11 @@
 import { set } from "mongoose";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as postsService from '../../utilities/posts-service'
 
 
 export default function NewPostPage() {
+const navigate = useNavigate()  
 const [post, setPost] = useState({title:"", body:""});
 
   function handleChange(evt) {
@@ -15,7 +17,7 @@ const [post, setPost] = useState({title:"", body:""});
     console.log("banana")
     postsService.createPost(post);
     setPost({title:"", body:""});
-
+    navigate("/posts")
   }
     return (
       <>
@@ -28,7 +30,7 @@ const [post, setPost] = useState({title:"", body:""});
             <input type="text" name="body" id="body" onChange={handleChange} value={post.body}/>
           </label>
 
-          <input type="submit" value="Add Post"/>
+          <input type="submit" value="Add Post" />
       </form>
       
       

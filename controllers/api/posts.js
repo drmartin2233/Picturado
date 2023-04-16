@@ -13,7 +13,7 @@ module.exports = {
 async function index(req, res) {
   try {
     // Add the user to the db
-    const posts = await Post.find({});
+    const posts = await Post.find({userId: req.user._id});
     res.json(posts);
   } catch (err) {
     res.status(400).json(err);
@@ -24,7 +24,7 @@ async function create(req, res) {
     console.log(req.body)
     try {
 
-       req.body.user = req.user._id
+       req.body.userId = req.user._id
         console.log(req.body)
        const createdPost = await Post.create(req.body);
  
