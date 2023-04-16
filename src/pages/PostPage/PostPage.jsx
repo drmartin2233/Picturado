@@ -1,24 +1,27 @@
 import { useState, useEffect } from 'react';
-import { getAllPosts, deletePost, updatePost } from '../../utilities/posts-service';
+import { getPost, deletePost, updatePost } from '../../utilities/posts-service';
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
 
 export default function AllPostsPage() {
-    const [posts, setPosts] = useState([])
+    const [post, setPost] = useState([])
     const [refresh, toggleRefresh] = useState()
+    let {id}= useParams()
 
     useEffect(function() {
-        async function retrievePosts() {
-            const retrievedPosts = await getAllPosts();
-            setPosts(retrievedPosts)
+        async function retrievePost() {
+            const retrievedPost = await getPost(id);
+            setPost(retrievedPost)
         }
-       retrievePosts()
-    }, [posts]) 
+       retrievePost()
+    }, []) 
 
     async function deleteImage(id) {
         console.log('in delete image function')
         await deletePost(id)
-        const postsList = await getAllPosts()
-        setPosts(postsList)
+        const onePost = await getPost()
+        setPost(onePost)
     }
 
     async function updatePost(id) {
@@ -28,20 +31,18 @@ export default function AllPostsPage() {
 
     return(
         <>
-        <h1>AllPostsPage</h1>
+        <h1>Post Page</h1>
 
-        { posts.map( (post, idx)  => (
-            <div key={idx}>
+        { 
+            <div>
                 <h1>{post.title}</h1>
                 <h3>{post.body}</h3>
                 <button onClick={ () => deleteImage(post._id)}>Delete Post</button>
                 <Link to={`/posts/${post._id}/edit`}><button>Edit Post</button></Link>
-                <Link to={`/posts/${post._id}`}><button>Post</button></Link>
-
             </div>
-        ))}
+        }
 
-        <h3>No Posts Yet</h3>
+        <h3></h3>
         
         </>
     )

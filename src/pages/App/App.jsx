@@ -6,6 +6,7 @@ import AuthPage from '../AuthPage/AuthPage';
 import AllPostsPage from '../AllPostsPage/AllPostsPage';
 import NewPostsPage from '../NewPostPage/NewPostPage';
 import EditPostPage from '../EditPostPage/EditPostPage';
+import PostPage from '../PostPage/PostPage';
 
 import NavBar from '../../components/NavBar/NavBar';
 
@@ -22,6 +23,7 @@ export default function App() {
               {/* Route components in here */}
 
               <Route path="/posts/new" element={ <NewPostsPage /> }/>
+              <Route path="/posts/:id" element={ <PostPage /> }/>
               <Route path="/posts" element={ <AllPostsPage /> }/>
               <Route path="/posts/:id/edit" element={ <EditPostPage /> }/>
             </Routes>
