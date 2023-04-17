@@ -45,8 +45,10 @@ export default function PostPage() {
     }
         <h2>Comments</h2>
          <CommentList id={id}/> 
-        
+        <div className="form-container align-center">
          <CommentForm id={id} />   
+        </div>
+
        
         
         </>

@@ -28,7 +28,7 @@ export default function AllPostsPage() {
 
     return(
         <>
-        <h1>AllPostsPage</h1>
+        <h1>All Your Posts</h1>
 
         { posts.map( (post, idx)  => (
             <div key={idx}>

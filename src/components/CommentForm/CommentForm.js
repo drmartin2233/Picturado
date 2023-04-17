@@ -27,7 +27,7 @@ const CommentForm = ({id}) => {
   };
 
   return (
-    <div>
+    <div className="form-container">
       <h3>Leave a Comment</h3>
       {success && <p>Thank you for your comment!</p>}
       <form onSubmit={handleSubmit}>
