@@ -2,10 +2,12 @@ import { useState, useEffect } from 'react';
 import { getPost, deletePost, updatePost } from '../../utilities/posts-service';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import CommentForm from '../../components/CommentForm/CommentForm';
+import CommentList from '../../components/CommentList/CommentList';
 
-
-export default function AllPostsPage() {
+export default function PostPage() {
     const [post, setPost] = useState([])
+    const [comments, setComments] = useState([]);
     const [refresh, toggleRefresh] = useState()
     let {id}= useParams()
 
@@ -33,16 +35,19 @@ export default function AllPostsPage() {
         <>
         <h1>Post Page</h1>
 
-        { 
-            <div>
-                <h1>{post.title}</h1>
-                <h3>{post.body}</h3>
-                <button onClick={ () => deleteImage(post._id)}>Delete Post</button>
-                <Link to={`/posts/${post._id}/edit`}><button>Edit Post</button></Link>
-            </div>
-        }
-
-        <h3></h3>
+    { 
+        <div>
+            <h1>{post.title}</h1>
+            <h3>{post.body}</h3>
+            <button onClick={ () => deleteImage(post._id)}>Delete Post</button>
+            <Link to={`/posts/${post._id}/edit`}><button>Edit Post</button></Link>
+        </div>
+    }
+        <h2>Comments</h2>
+         <CommentList id={id}/> 
+        
+         <CommentForm id={id} />   
+       
         
         </>
     )
