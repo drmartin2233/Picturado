@@ -39,6 +39,9 @@ export default function PostPage() {
         <div>
             <h1>{post.title}</h1>
             <h3>{post.body}</h3>
+            <div className="imageFrame">
+            <image src={post.image} />
+            </div>
             <button onClick={ () => deleteImage(post._id)}>Delete Post</button>
             <Link to={`/posts/${post._id}/edit`}><button>Edit Post</button></Link>
         </div>
